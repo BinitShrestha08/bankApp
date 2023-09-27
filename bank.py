@@ -37,11 +37,12 @@ class Bank:
     def addCustomer(self):
         customer_name = input("Enter customer name: ")
         found = self.find_customer(customer_name)
-        if found != None:
-            print('Customer already exists.')
-        else:
+        if found is None:
             self.customers.append(Customer(customer_name))
             print(f'Customer {customer_name} added successfully.')
+
+        else:
+            print('Customer already exists.')
 
     def deleteCustomer(self):
         customer_name = input("Enter customer name: ")
@@ -60,23 +61,6 @@ class Bank:
             print(f'Customer {customer_name} does not exist.')
         else:
             print(found)
-
-        # for customer in self.customers:
-        #     if customer.name == customer_name:
-        #         found_customer = customer
-        #         break
-        # if found_customer:
-        #     print(found_customer)
-        # else:
-        #     print(f'Customer {customer_name} does not exist.')
-
-    # def adminLogin():
-    #     manager = Manager()
-    #     manager_name = input("Enter manager's name: ")
-    #     if manager_name == manager.name:
-    #         manager.manager_menu()
-    #     else:
-    #         print("Manager authentication failed.")
 
     def admin_login(self):
         self.manager.login(self)
